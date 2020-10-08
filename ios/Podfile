@@ -8,6 +8,7 @@ target 'Laibu' do
 
   use_react_native!(:path => config["reactNativePath"])
 
+
   target 'LaibuTests' do
     inherit! :complete
     # Pods for testing

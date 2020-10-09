@@ -5,13 +5,8 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-function HomeScreen() {
-  return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text>Home!</Text>
-    </View>
-  );
-}
+//stack navigators
+import HomeStack from './src/navigation/HomeStack';
 
 function SettingsScreen() {
   return (
@@ -32,11 +27,9 @@ export default function App() {
             let iconName;
 
             if (route.name === 'Home') {
-              iconName = focused
-                ? 'ios-information-circle'
-                : 'ios-information-circle-outline';
+              iconName = focused ? 'home-sharp' : 'home-outline';
             } else if (route.name === 'Settings') {
-              iconName = focused ? 'ios-list-box' : 'ios-list';
+              iconName = focused ? 'settings-sharp' : 'settings-outline';
             }
             return <Icon name={iconName} size={size} color={color} />;
           },
@@ -45,7 +38,7 @@ export default function App() {
           activeTintColor: '#E26D5C',
           inactiveTintColor: 'grey',
         }}>
-        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Home" component={HomeStack} />
         <Tab.Screen name="Settings" component={SettingsScreen} />
       </Tab.Navigator>
     </NavigationContainer>

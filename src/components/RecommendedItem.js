@@ -2,26 +2,26 @@ import React from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-export default function RecommendedItem({navigation}) {
+export default function RecommendedItem({navigation, item}) {
+  const {id, title, author, price, rating, year, image} = item;
   return (
-    <TouchableOpacity style={styles.container}>
-      <Image
-        style={styles.thumbnailImage}
-        source={{
-          uri:
-            'https://images.template.net/wp-content/uploads/2014/05/Vintage-Book-Cover-Template.jpg',
-        }}
-      />
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() => navigation.push('Details', {item: item})}>
+      <Image style={styles.thumbnailImage} source={{uri: image}} />
       <View style={styles.itemDetails}>
         <Text style={styles.titleText} numberOfLines={1}>
-          Title
+          {title}
         </Text>
         <Text style={styles.authorText} numberOfLines={1}>
-          Author
+          {author}
         </Text>
-        <Text style={styles.yearText}>Year</Text>
+        <Text style={styles.yearText}>{year}</Text>
         <Icon style={styles.ratingStars} name="star" />
-        <Text style={styles.priceText}>{'\u20B9'} Price</Text>
+        <Text style={styles.priceText}>
+          {'\u20B9'}
+          {price}
+        </Text>
       </View>
     </TouchableOpacity>
   );
@@ -31,12 +31,11 @@ const styles = {
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 25,
+    padding: 15,
   },
   thumbnailImage: {
-    width: 65,
     height: 100,
-    resizeMode: 'contain',
+    resizeMode: 'cover',
     marginRight: 10,
     flex: 1,
   },

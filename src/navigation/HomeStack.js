@@ -12,7 +12,7 @@ export default function HomeStack({navigation}) {
       initialRouteName="Home"
       screenOptions={{
         headerStyle: {
-          backgroundColor: '#E26D5C',
+          backgroundColor: '#EA8953',
         },
         headerTintColor: '#fff',
         headerTitleStyle: {

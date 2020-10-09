@@ -1,5 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import {ScrollView, View, Text, TouchableOpacity} from 'react-native';
+import {
+  SafeAreaView,
+  ScrollView,
+  View,
+  Text,
+  TouchableOpacity
+} from 'react-native';
 import axios from 'axios';
 
 //components
@@ -53,19 +59,24 @@ export default function HomeScreen({navigation}) {
     );
   }
   return (
-    <ScrollView style={styles.scrollViewStyle}>
-      {isLoading ? (
-        <View style={styles.spinnerContainer}>
-          <Spinner size="large" color="#EA8953" spinnerText="Loading" />
-        </View>
-      ) : (
-        renderScreen()
-      )}
-    </ScrollView>
+    <SafeAreaView style={styles.container}>
+      <ScrollView style={styles.scrollViewStyle}>
+        {isLoading ? (
+          <View style={styles.spinnerContainer}>
+            <Spinner size="large" color="#EA8953" spinnerText="Loading" />
+          </View>
+        ) : (
+          renderScreen()
+        )}
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = {
+  container: {
+    flex: 1,
+  },
   scrollViewStyle: {
     padding: 7,
     paddingTop: 10,

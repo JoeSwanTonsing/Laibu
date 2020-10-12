@@ -4,7 +4,7 @@ import {
   ScrollView,
   View,
   Text,
-  TouchableOpacity
+  TouchableOpacity,
 } from 'react-native';
 import axios from 'axios';
 
@@ -18,15 +18,11 @@ export default function HomeScreen({navigation}) {
   const [isLoading, setIsLoading] = useState(false);
 
   function getRecommendations() {
-    return axios.get(
-      'https://joeswantonsing.github.io/Laibu_DATA/api/recommended.json',
-    );
+    return axios.get('http://192.168.1.8/laibu/api/allBookListing/');
   }
 
   function getTrending() {
-    return axios.get(
-      'https://joeswantonsing.github.io/Laibu_DATA/api/trending.json',
-    );
+    return axios.get('http://192.168.1.8/laibu/api/allBookListing/');
   }
 
   useEffect(() => {
@@ -50,6 +46,7 @@ export default function HomeScreen({navigation}) {
           sectionTitle="Recommended Books for you"
           items={recommendations}
         />
+        {console.log(trending)}
         <Recommendations
           navigation={navigation}
           sectionTitle="Trending Books"

@@ -32,7 +32,7 @@ export default function ItemDetailsScreen({navigation, route}) {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [item_id]);
 
   const {
     title,
@@ -45,18 +45,25 @@ export default function ItemDetailsScreen({navigation, route}) {
     pages,
     author_name,
     genre_name,
+    genre_type,
   } = details;
 
   function getSubtitle() {
     if (subtitle !== '' && subtitle != null) {
-      return <Text style={styles.subTitleText}>{subtitle}</Text>;
+      return (
+        <Text style={[styles.subTitleText, styles.margBot]}>{subtitle}</Text>
+      );
     }
     return null;
   }
 
   function getYear() {
     if (year !== '' && year != null) {
-      return <Text style={styles.yearText}>{year}</Text>;
+      return (
+        <Text style={[styles.yearText, styles.margBot]}>
+          Year Published: {year}
+        </Text>
+      );
     }
     return null;
   }
@@ -66,6 +73,13 @@ export default function ItemDetailsScreen({navigation, route}) {
       return <Text style={styles.descriptionText}>{description}</Text>;
     }
     return <Text style={styles.descriptionText}>Description Unavailable</Text>;
+  }
+
+  function getPages() {
+    if (pages !== '' && pages != null) {
+      return <Text style={styles.pagesText}>{pages} Pages</Text>;
+    }
+    return null;
   }
 
   function getPrice() {
@@ -88,6 +102,20 @@ export default function ItemDetailsScreen({navigation, route}) {
     }
   }
 
+  function getGenreName() {
+    if (genre_name !== '' && genre_name != null) {
+      return <Text style={styles.genreText}>{genre_name}</Text>;
+    }
+    return null;
+  }
+
+  function getGenreType() {
+    if (genre_type !== '' && genre_type !== null) {
+      return <Text style={styles.genreText}>{genre_type}</Text>;
+    }
+    return null;
+  }
+
   function renderDetails() {
     return (
       <View style={styles.content}>
@@ -96,11 +124,18 @@ export default function ItemDetailsScreen({navigation, route}) {
             <Image style={styles.thumbnail} source={{uri: thumbnail}} />
           </View>
           <View style={styles.descriptionContainer}>
-            <Text style={styles.titleText}>{title}</Text>
+            <Text style={[styles.titleText, styles.margBot]}>{title}</Text>
             {getSubtitle()}
-            <Text style={styles.authorText}>{author_name}</Text>
+            <Text style={[styles.authorText, styles.margBot]}>
+              {author_name}
+            </Text>
             {getYear()}
+            {getPages()}
           </View>
+        </View>
+        <View style={styles.genreContainer}>
+          {getGenreType()}
+          {getGenreName()}
         </View>
         {getPrice()}
         <View style={styles.aboutSection}>
@@ -149,7 +184,6 @@ const styles = {
   thumbnailContainer: {
     flex: 1,
     marginRight: 5,
-    backgroundColor: 'red',
   },
   thumbnail: {
     height: 100,
@@ -177,7 +211,9 @@ const styles = {
   },
   yearText: {
     color: 'grey',
+    fontWeight: 'bold',
   },
+  pagesText: {},
   buyBTN: {
     borderRadius: 3,
     borderWidth: 1,
@@ -202,5 +238,21 @@ const styles = {
   descriptionText: {
     marginTop: 10,
     textAlign: 'justify',
+  },
+  genreContainer: {
+    flexDirection: 'row',
+    flex: 1,
+    flexWrap: 'wrap',
+  },
+  genreText: {
+    paddingVertical: 2,
+    paddingHorizontal: 5,
+    marginRight: 15,
+    marginBottom: 15,
+    color: '#fff',
+    backgroundColor: 'coral',
+  },
+  margBot: {
+    marginBottom: 7,
   },
 };

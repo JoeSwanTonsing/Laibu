@@ -4,18 +4,18 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import StarRating from 'react-native-star-rating';
 
 export default function RecommendedItem({navigation, item}) {
-  const {id, title, author, price, rating, year, image} = item;
+  const {id, title, author_name, price, rating, year, thumbnail} = item;
   return (
     <TouchableOpacity
       style={styles.container}
-      onPress={() => navigation.push('Details', {item: item})}>
-      <Image style={styles.thumbnailImage} source={{uri: image}} />
+      onPress={() => navigation.push('Details', {item_id: id})}>
+      <Image style={styles.thumbnailImage} source={{uri: thumbnail}} />
       <View style={styles.itemDetails}>
         <Text style={styles.titleText} numberOfLines={1}>
           {title}
         </Text>
         <Text style={styles.authorText} numberOfLines={1}>
-          {author}
+          {author_name}
         </Text>
         <Text style={styles.yearText}>{year}</Text>
 

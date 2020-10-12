@@ -7,14 +7,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 //stack navigators
 import HomeStack from './src/navigation/HomeStack';
-
-function SettingsScreen() {
-  return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text>Settings!</Text>
-    </View>
-  );
-}
+import SettingsStack from './src/navigation/SettingsStack';
 
 const Tab = createBottomTabNavigator();
 
@@ -39,7 +32,7 @@ export default function App() {
           inactiveTintColor: 'grey',
         }}>
         <Tab.Screen name="Home" component={HomeStack} />
-        <Tab.Screen name="Settings" component={SettingsScreen} />
+        <Tab.Screen name="Settings" component={SettingsStack} />
       </Tab.Navigator>
     </NavigationContainer>
   );

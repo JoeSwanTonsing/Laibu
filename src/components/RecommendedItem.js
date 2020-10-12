@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import StarRating from 'react-native-star-rating';
 
 export default function RecommendedItem({navigation, item}) {
   const {id, title, author, price, rating, year, image} = item;
@@ -17,7 +18,7 @@ export default function RecommendedItem({navigation, item}) {
           {author}
         </Text>
         <Text style={styles.yearText}>{year}</Text>
-        <Icon style={styles.ratingStars} name="star" />
+
         <Text style={styles.priceText}>
           {'\u20B9'}
           {price}
@@ -42,12 +43,12 @@ const styles = {
   itemDetails: {
     marginLeft: 5,
     flex: 3,
+    justifyContent: 'space-between',
   },
   titleText: {
     fontWeight: 'bold',
     color: '#293241',
     fontSize: 16,
-    flex: 1,
   },
   authorText: {
     color: 'grey',

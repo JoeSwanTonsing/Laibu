@@ -250,7 +250,7 @@ const styles = {
     marginRight: 15,
     marginBottom: 15,
     color: '#fff',
-    backgroundColor: 'coral',
+    backgroundColor: '#3D5A80',
   },
   margBot: {
     marginBottom: 7,

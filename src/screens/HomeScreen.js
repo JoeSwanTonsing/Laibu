@@ -18,11 +18,11 @@ export default function HomeScreen({navigation}) {
   const [isLoading, setIsLoading] = useState(false);
 
   function getRecommendations() {
-    return axios.get('http://192.168.1.8/laibu/api/allBookListing/');
+    return axios.get('http://192.168.1.8:80/laibu/api/allBookListing/');
   }
 
   function getTrending() {
-    return axios.get('http://192.168.1.8/laibu/api/allBookListing/');
+    return axios.get('http://192.168.1.8:80/laibu/api/allBookListing/');
   }
 
   useEffect(() => {
@@ -46,7 +46,6 @@ export default function HomeScreen({navigation}) {
           sectionTitle="Recommended Books for you"
           items={recommendations}
         />
-        {console.log(trending)}
         <Recommendations
           navigation={navigation}
           sectionTitle="Trending Books"

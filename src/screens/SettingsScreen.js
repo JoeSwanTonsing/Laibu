@@ -4,69 +4,42 @@ import {
   ScrollView,
   View,
   Text,
-  FlatList,
   TouchableOpacity,
 } from 'react-native';
 
-import Icon from 'react-native-vector-icons';
-
-//my components
-import Spinner from '../components/Spinner';
-
-const DATA = [
-  {
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-    title: 'Profile',
-    icon: 'person-circle-outline',
-    arrow: 'chevron-forward',
-  },
-  {
-    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-    title: 'Account',
-    icon: 'accessibility-outline',
-    arrow: 'chevron-forward',
-  },
-  {
-    id: '58694a0f-3da1-471f-bd96-145571e29d72',
-    title: 'Third Item',
-    icon: 'person-circle-outline',
-    arrow: 'chevron-forward',
-  },
-];
-
-const Item = ({title, arrow, icon}) => (
-  <TouchableOpacity style={styles.itemStyle}>
-    <Text style={styles.title}>{title}</Text>
-  </TouchableOpacity>
-);
+import Icon from 'react-native-vector-icons/Ionicons';
 
 export default function SettingsScreen() {
   const [isLoading, setIsLoading] = useState(false);
 
-  const renderItem = ({item}) => (
-    <Item title={item.title} icon={item.icon} arrow={item.arrow} />
-  );
-
-  function renderMenu() {
-    return (
-      <FlatList
-        data={DATA}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-        style={styles.scrollViewStyle}
-      />
-    );
-  }
-
   return (
     <SafeAreaView style={styles.container}>
-      {isLoading ? (
-        <View style={styles.spinnerContainer}>
-          <Spinner size="large" color="#EA8953" spinnerText="Loading" />
+      <ScrollView style={styles.scrollViewStyle}>
+        <View style={styles.menuContainer}>
+          <TouchableOpacity style={styles.menuItem}>
+            <View style={styles.itemLeft}>
+              <Icon
+                name="person-circle-outline"
+                size={30}
+                style={styles.titleIcon}
+              />
+              <Text style={styles.titleText}>Profile</Text>
+            </View>
+            <Icon name="chevron-forward" size={30} style={styles.rightIcon} />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.menuItem}>
+            <View style={styles.itemLeft}>
+              <Icon
+                name="person-circle-outline"
+                size={30}
+                style={styles.titleIcon}
+              />
+              <Text style={styles.titleText}>Profile</Text>
+            </View>
+            <Icon name="chevron-forward" size={30} style={styles.rightIcon} />
+          </TouchableOpacity>
         </View>
-      ) : (
-        renderMenu()
-      )}
+      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -75,17 +48,37 @@ const styles = {
   container: {
     flex: 1,
   },
-  scrollViewStyle: {
-    padding: 7,
+  scrollViewStyle: {},
+  menuContainer: {
+    margin: 7,
     paddingTop: 10,
-    backgroundColor: '#fff',
   },
-  itemStyle: {
+  menuItem: {
     flexDirection: 'row',
-    borderRadius: 3,
+    paddingHorizontal: 15,
     borderWidth: 1,
     borderColor: '#d1d1d1',
+    borderRadius: 4,
     padding: 10,
-    marginBottom: 5,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    marginBottom: 10,
+  },
+  itemLeft: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  titleIcon: {
+    marginRight: 6,
+    color: '#3D5A80',
+  },
+  titleText: {
+    marginLeft: 6,
+    fontSize: 18,
+    color: '#3D5A80',
+  },
+  rightIcon: {
+    color: '#3D5A80',
   },
 };

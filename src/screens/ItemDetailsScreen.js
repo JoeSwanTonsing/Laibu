@@ -20,7 +20,7 @@ export default function ItemDetailsScreen({navigation, route}) {
   useEffect(() => {
     setIsLoading(true);
     axios
-      .get('http://192.168.1.9/laibu/api/books/', {
+      .get('http://192.168.1.9/laibu-api/api/books/', {
         params: {
           book_id: item_id,
         },

@@ -7,6 +7,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 //stack navigators
 import HomeStack from './src/navigation/HomeStack';
+import MyBooksStack from './src/navigation/MyBooksStack';
 import SettingsStack from './src/navigation/SettingsStack';
 
 const Tab = createBottomTabNavigator();
@@ -32,6 +33,7 @@ export default function App() {
           inactiveTintColor: 'grey',
         }}>
         <Tab.Screen name="Home" component={HomeStack} />
+        <Tab.Screen name="MyBooks" component={MyBooksStack} />
         <Tab.Screen name="Settings" component={SettingsStack} />
       </Tab.Navigator>
     </NavigationContainer>

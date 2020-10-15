@@ -24,6 +24,8 @@ export default function App() {
               iconName = focused ? 'home-sharp' : 'home-outline';
             } else if (route.name === 'Settings') {
               iconName = focused ? 'settings-sharp' : 'settings-outline';
+            } else if (route.name === 'MyBooks') {
+              iconName = focused ? 'book-sharp' : 'book-outline';
             }
             return <Icon name={iconName} size={size} color={color} />;
           },

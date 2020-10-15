@@ -5,6 +5,14 @@ import StarRating from 'react-native-star-rating';
 
 export default function RecommendedItem({navigation, item}) {
   const {id, title, author_name, price, rating, year, thumbnail} = item;
+
+  function getYear() {
+    if (year !== '' || year !== null) {
+      return <Text style={styles.yearText}>Year Published: {year}</Text>;
+    }
+    return null;
+  }
+
   return (
     <TouchableOpacity
       style={styles.container}
@@ -17,8 +25,7 @@ export default function RecommendedItem({navigation, item}) {
         <Text style={styles.authorText} numberOfLines={1}>
           {author_name}
         </Text>
-        <Text style={styles.yearText}>{year}</Text>
-
+        {getYear()}
         <Text style={styles.priceText}>
           {'\u20B9'}
           {price}

@@ -22,7 +22,7 @@ export default function HomeScreen({navigation}) {
   }
 
   function getTrending() {
-    return axios.get('http://192.168.1.9:80/laibu-api/api/allBookListing/');
+    return axios.get('http://192.168.1.9:80/laibu-api/api/trending/');
   }
 
   useEffect(() => {
